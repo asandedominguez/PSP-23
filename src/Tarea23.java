@@ -1,4 +1,5 @@
-import java.net.InetAddress;
+import java.net.*;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -12,15 +13,14 @@ public class Tarea23 extends Thread {
 
             if (!pagina.equals("salir")) {
                 try {
-                    InetAddress web = InetAddress.getByName(pagina);
-                    System.out.println("web: " + web.getHostName() + " - ip: " + web.getHostAddress());
-
                     for (InetAddress ip: InetAddress.getAllByName(pagina)) {
                         System.out.println(ip.getHostAddress());
                     }
 
-                    InetAddress p = InetAddress.getLocalHost();
-                    System.out.println(p);
+                    InetAddress p = Inet4Address.getLocalHost();
+                    InetAddress i = Inet6Address.getLocalHost();
+                    System.out.println("IPv4: " + p + " IPv6: " + i);
+
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
